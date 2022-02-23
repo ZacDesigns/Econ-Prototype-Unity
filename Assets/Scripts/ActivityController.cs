@@ -9,6 +9,11 @@ namespace EconomyPrototype {
 
     public class ActivityController : MonoBehaviour {
 
+		[SerializeField]
+		public CurrentResources CurrentResources;
+
+		[SerializeField]
+		public ActivityProfile Profile;
 
 		#region Public Methods
 
@@ -116,6 +121,8 @@ namespace EconomyPrototype {
 		private IEnumerator UpdatePlaybackTime() {
 			while (m_IsPlaying) {
 				PlaybackTime += Time.deltaTime;
+				Resource r = new Resource();
+				CurrentResources.Current = CurrentResources.Current;
 				yield return null;
 			}
 		}
