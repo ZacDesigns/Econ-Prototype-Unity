@@ -15,6 +15,9 @@ namespace EconomyPrototype {
 		[SerializeField]
 		public ActivityProfile Profile;
 
+		[SerializeField]
+		public ResourcesDisplay resourcesDisplay;
+
 		#region Public Methods
 
 		public CinemachineVirtualCamera GetVCam() {
@@ -122,7 +125,8 @@ namespace EconomyPrototype {
 			while (m_IsPlaying) {
 				PlaybackTime += Time.deltaTime;
 				Resource r = new Resource();
-				CurrentResources.Current = CurrentResources.Current;
+				CurrentResources.Current = CurrentResources.Current - Profile.ResourceConsumptionSpeed * Time.deltaTime;
+				ResourcesDisplay.OnResourceChange();
 				yield return null;
 			}
 		}
